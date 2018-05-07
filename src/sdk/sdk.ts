@@ -20,7 +20,6 @@ export default class Sdk {
     /**
      * Metodo que trae la lista de POSTS, y cuando los POSTS esten listos, dibujara los elementos
      * */
-
     getData() {
         this.postService.getPosts().subscribe((response) => {
             this.posts = response;
