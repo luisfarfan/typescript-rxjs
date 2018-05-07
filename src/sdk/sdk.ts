@@ -10,9 +10,16 @@ export default class Sdk {
 
     }
 
+    /**
+     * Método que inicia la aplicación
+     * */
     init() {
         this.getData();
     }
+
+    /**
+     * Metodo que trae la lista de POSTS, y cuando los POSTS esten listos, dibujara los elementos
+     * */
 
     getData() {
         this.postService.getPosts().subscribe((response) => {
@@ -23,6 +30,9 @@ export default class Sdk {
         });
     }
 
+    /**
+     * Metodo que dibuja una lista de elementos `li` dentro de un elemento `ul`
+     * */
     createPostsElements() {
         const ul = document.createElement('ul');
         const list_li = this.posts.map(v => this.drawPost(v.body)).join('');
@@ -31,6 +41,11 @@ export default class Sdk {
         postlists.appendChild(ul);
     }
 
+    /**
+     * Metodo que devuelve un li con el string de envio
+     * @param: title texto que ira dentro del `li`
+     * @return: string elemento HTML li
+     * */
     drawPost(title: string) {
         return `<li>${title}</li>`;
     }
