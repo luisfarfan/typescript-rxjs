@@ -1,14 +1,10 @@
 import {Http} from "../common/utils/http";
-
-export interface Post {
-    body: string;
-    id: number;
-    title: string;
-}
+import {PostService} from "../common/services/post";
+import {IPost} from "../common/interfaces/post.interface";
 
 export default class Sdk {
-    private http = new Http();
-    posts: Post[];
+    posts: IPost[];
+    postService = new PostService();
 
     constructor() {
 
@@ -19,13 +15,12 @@ export default class Sdk {
     }
 
     getData() {
-        this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(
-            (response) => {
-                this.posts = response.response as Post[];
-                this.createPostsElements();
-            }, (error) => {
-                console.log(error)
-            });
+        this.postService.getPosts().subscribe((response) => {
+            this.posts = response;
+            this.createPostsElements();
+        }, (error) => {
+            console.log(error)
+        });
     }
 
     createPostsElements() {
