@@ -1,9 +1,13 @@
 import {Http} from "../common/utils/http";
 
-export class Sdk {
+export default class Sdk {
     private http = new Http();
 
     constructor() {
+
+    }
+
+    init() {
 
     }
 
