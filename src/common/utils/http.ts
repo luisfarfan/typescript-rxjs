@@ -1,30 +1,55 @@
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/dom/ajax';
+import {AjaxResponse} from "rxjs/internal/observable/dom/AjaxObservable";
 
 export class Http {
     constructor() {
 
     }
 
-    private headers: any;
+    private headers = {};
 
-    get(url: string) {
-
+    get(url: string): Observable<AjaxResponse> {
+        return Observable.ajax(url)
     }
 
-    post(url: string, data: any) {
-
+    post(url: string, data: any): Observable<AjaxResponse> {
+        return Observable.ajax({
+            url: url,
+            method: 'POST',
+            headers: this.headers,
+            body: data
+        });
     }
 
-    put(url: string, data: any) {
+    put(url: string, data: any): Observable<AjaxResponse> {
+        return Observable.ajax({
+            url: url,
+            method: 'PUT',
+            headers: this.headers,
+            body: data
+        });
+    }
 
+    patch(url: string, data: any): Observable<AjaxResponse> {
+        return Observable.ajax({
+            url: url,
+            method: 'PATCH',
+            headers: this.headers,
+            body: data
+        });
     }
 
     delete(url: string) {
-
+        return Observable.ajax({
+            url: url,
+            method: 'DELETE',
+            headers: this.headers,
+        });
     }
 
-    setHeaders() {
-
+    setHeaders(headers: {}) {
+        this.headers = headers;
     }
 
     setToken(token: string) {
