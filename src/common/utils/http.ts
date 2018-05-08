@@ -4,7 +4,7 @@ import {map, filter, reduce, debounce, debounceTime} from "rxjs/operators";
 import {AjaxResponse} from "rxjs/internal/observable/dom/AjaxObservable";
 
 export class Http {
-    constructor() {
+    constructor(headers: Object) {
 
     }
 
