@@ -19,6 +19,7 @@ export default class Sdk {
             this.resetForm();
         });
         this.addOrEditComment();
+        console.log('hola')
     }
 
     /**
