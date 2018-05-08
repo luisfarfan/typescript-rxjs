@@ -1,12 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="dist/bundle.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
 </head>
 <body>
-<h2>UTAQ HOLA!</h2>
-<div id="post-lists"></div>
+<div class="container">
+    <div class="col-lg-offset-3 text-center">
+        <h1>Ejemplos de reactividad con RxJs!</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div id="post" class="alert alert-success" role="alert">
+
+            </div>
+        </div>
+        <div class="col-sm">
+            <div id="comments">
+
+            </div>
+        </div>
+        <div class="col-sm">
+            <form id="form">
+                <div class="form-group">
+                    <label for="input-name">Nombre</label>
+                    <input type="email" class="form-control" id="input-name" aria-describedby="emailHelp"
+                           placeholder="Escribe tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="input-email">Correo</label>
+                    <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp"
+                           placeholder="Escribe tu email">
+                </div>
+                <div class="form-group">
+                    <label for="input-body">Comentario</label>
+                    <input type="email" class="form-control" id="input-body" aria-describedby="emailHelp"
+                           placeholder="Has tu comentario">
+                </div>
+                <input type="hidden" id="input-id">
+                <button type="button" id="btn_comment" class="btn btn-primary">Enviar!</button>
+            </form>
+        </div>
+    </div>
+</div>
+<!--<h2>UTAQ HOLA!</h2>-->
+<!--<div id="post-lists"></div>-->
 </body>
+<script src="dist/bundle.js"></script>
 </html>
