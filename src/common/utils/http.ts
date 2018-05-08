@@ -10,50 +10,54 @@ export class Http {
 
     private headers = {};
 
-    get(url: string): Observable<AjaxResponse> {
-        return Observable.ajax(url);
+    get(url: string, headers?: Object): Observable<AjaxResponse> {
+        return Observable.ajax({
+            url: url,
+            method: 'GET',
+            headers: this.validateWichHeader(headers),
+        });
     }
 
-    post(url: string, data: any): Observable<AjaxResponse> {
+    post(url: string, data: any, headers?: Object): Observable<AjaxResponse> {
         return Observable.ajax({
             url: url,
             method: 'POST',
-            headers: this.headers,
+            headers: this.validateWichHeader(headers),
             body: data
         });
     }
 
-    put(url: string, data: any): Observable<AjaxResponse> {
+    put(url: string, data: any, headers?: Object): Observable<AjaxResponse> {
         return Observable.ajax({
             url: url,
             method: 'PUT',
-            headers: this.headers,
+            headers: this.validateWichHeader(headers),
             body: data
         });
     }
 
-    patch(url: string, data: any): Observable<AjaxResponse> {
+    patch(url: string, data: any, headers?: Object): Observable<AjaxResponse> {
         return Observable.ajax({
             url: url,
             method: 'PATCH',
-            headers: this.headers,
+            headers: this.validateWichHeader(headers),
             body: data
         });
     }
 
-    delete(url: string) {
+    delete(url: string, headers?: Object) {
         return Observable.ajax({
             url: url,
             method: 'DELETE',
-            headers: this.headers,
+            headers: this.validateWichHeader(headers),
         });
     }
 
-    setHeaders(headers: {}) {
+    setHeaders(headers?: Object) {
         this.headers = headers;
     }
 
-    setToken(token: string) {
-
+    private validateWichHeader(headers?: Object) {
+        return headers ? headers : this.headers ? this.headers : null;
     }
 }
