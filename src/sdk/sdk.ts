@@ -5,21 +5,31 @@ import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 import {fromEvent} from "rxjs";
 
-
+/**
+ * Clase que crea los procesos de renderizar elementos HTML, con su respectiva información
+ * @class Sdk
+ * */
 export default class Sdk {
+    /** objeto que almacenara un tipo `Post` */
     post: IPost;
+    /** objeto que almacenara un array de tipo `IComments` */
     comments: IComment[];
+    /** servicio para obtener la información de una API REST */
     postService = new PostService(1);
+    /** instancia de tipo `Subject` que permitira realizar las operaciones de un Observable*/
     $comments = new Subject<IComment[]>();
+    /** instancia de tipo Observable */
     $commentsDivs = new Observable<Event>();
 
+    /**
+     * Inicializa los listener de eventos de observables.
+     * */
     constructor() {
         this.$comments.subscribe(comments => {
             this.createCommentsElements();
             this.resetForm();
         });
         this.addOrEditComment();
-        console.log('hola')
     }
 
     /**
@@ -63,8 +73,8 @@ export default class Sdk {
     }
 
     /**
-     * HTML del POST
-     * @return {string} Elemento HTML en string
+     * Elemento HTML de un objeto `Post`
+     * @return string Elemento HTML en string
      * */
 
     htmlPost() {
@@ -73,7 +83,7 @@ export default class Sdk {
     }
 
     /**
-     *
+     * Crea los comentarios como elementos `Div` HTML
      * */
 
     createCommentsElements() {
