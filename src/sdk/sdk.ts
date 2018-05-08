@@ -11,7 +11,7 @@ export default class Sdk {
     comments: IComment[];
     postService = new PostService(1);
     $comments = new Subject<IComment[]>();
-    $commentsDivs = new Subject();
+    $commentsDivs = new Observable<Event>();
 
     constructor() {
         this.$comments.subscribe(comments => {
@@ -144,8 +144,8 @@ export default class Sdk {
 
     listenClickDivsCard() {
         const divCard = document.getElementsByClassName('card');
-        var obsDiv = fromEvent(divCard, 'click');
-        obsDiv.subscribe((e: MouseEvent) => {
+        this.$commentsDivs = fromEvent(divCard, 'click');
+        this.$commentsDivs.subscribe((e: MouseEvent) => {
             this.setCommentToCard(this.getDivCard(e).id);
         });
     }
